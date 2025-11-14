@@ -10,7 +10,7 @@
 <p align="center">
   <img src="docs/todo-ui.png" alt="Moshe's ToDo List UI" width="800">
   <br>
-  <em>极简深色主题 · Moshe 自主设计与实现</em>
+  <em>极简深色主题</em>
 </p>
 
 
