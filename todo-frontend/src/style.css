@@ -1,0 +1,18 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #0d1b2a;
+}
+
+/* 让 todo 列表自己滚动，而不是整页滚动 */
+.list-wrapper {
+  max-height: 55vh;   /* 列表最高占屏幕 55% 高度，你可以自己调大/调小 */
+  overflow-y: auto;   /* 超出就出现纵向滚动条 */
+  padding-right: 4px; /* 给滚动条留一点空间，不挤到内容 */
+  margin-top: 8px;
+}
