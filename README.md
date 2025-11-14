@@ -57,6 +57,7 @@
 
 📁 项目结构
 
+```
 ToDoList/
 ├── todo-frontend/       # Vue3 + Vite 前端
 │   ├── src/
@@ -68,6 +69,8 @@ ToDoList/
 │   └── pom.xml
 │
 └── README.md
+
+```
 
 
 ⸻
