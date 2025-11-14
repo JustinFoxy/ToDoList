@@ -8,7 +8,7 @@
 🌙 UI 预览
 
 <div align="center">
-  <img src="docs/todo-ui.png" width="720" style="border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.5);" />
+  ![UI Screenshot](docs/todo-ui.png)
   <br>
   <em>极简深色主题 · Moshe 自主设计与实现</em>
 </div>
