@@ -29,7 +29,6 @@ public class TodoController {
         if (userId != null) {
             qw.eq("user_id", userId);
         }
-
         return mapper.selectList(qw);
     }
 
