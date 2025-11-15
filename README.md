@@ -6,7 +6,6 @@
 
 
 ## 🌙 UI 预览
-
 <p align="center">
   <img src="docs/todo-ui.png" alt="Moshe's ToDo List UI" width="800">
   <br>
