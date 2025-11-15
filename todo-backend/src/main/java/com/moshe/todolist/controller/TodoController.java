@@ -20,7 +20,7 @@ public class TodoController {
         this.mapper = mapper;
     }
 
-    // 1. 查询所有 Todo
+    // 查询用户所有任务（父 + 子）
     @GetMapping
     public List<Todo> list(@RequestParam(required = false) Integer userId) {
         QueryWrapper<Todo> qw = new QueryWrapper<>();
@@ -32,7 +32,26 @@ public class TodoController {
         return mapper.selectList(qw);
     }
 
-    // 2. 新增 Todo（POST）
+
+    // 查询某个用户的顶级任务（parent_id IS NULL）
+    @GetMapping("/roots")
+    public List<Todo> listRoot(@RequestParam Integer userId) {
+        QueryWrapper<Todo> qw = new QueryWrapper<>();
+        qw.eq("user_id", userId)
+                .isNull("parent_id");
+        return mapper.selectList(qw);
+    }
+
+    // 查询某个父任务的所有子任务
+    @GetMapping("/children")
+    public List<Todo> listChildren(@RequestParam Integer parentId) {
+        QueryWrapper<Todo> qw = new QueryWrapper<>();
+        qw.eq("parent_id", parentId);
+        return mapper.selectList(qw);
+    }
+
+
+    // 新增任务（可以是父任务，也可以是子任务）
     @PostMapping
     public Todo addTodo(@RequestBody Todo todo) {
 
@@ -40,13 +59,11 @@ public class TodoController {
         todo.setCompleted(0);
         todo.setCreateTime(LocalDateTime.now());
         todo.setUpdateTime(LocalDateTime.now());
-
         mapper.insert(todo);
-
         return todo;
     }
 
-    // 3. 删除 Todo（DELETE /api/todos/{id}）
+    // 删除任务（有外键 + ON DELETE CASCADE，会把子任务一起删）
     @DeleteMapping("/{id}")
     public String deleteTodo(@PathVariable Integer id) {
         int rows = mapper.deleteById(id);  // MyBatis-Plus 自带的方法
@@ -61,7 +78,7 @@ public class TodoController {
     }
 
 
-    // 4. 修改 Todo（PUT）——方案 A：可以改 content + completed
+    // 4. 修改任务内容 & 状态
     @PutMapping("/{id}")
     public Todo updateTodo(@PathVariable Integer id, @RequestBody Todo body) {
 

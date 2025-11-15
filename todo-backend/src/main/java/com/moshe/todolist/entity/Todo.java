@@ -27,4 +27,8 @@ public class Todo {
     //外健
     @TableField("user_id")
     private Integer userId;
+
+    // ⭐ 新增：父任务 ID（可以为 null）
+    @TableField("parent_id")
+    private Integer parentId;
 }
